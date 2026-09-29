@@ -1,4 +1,5 @@
-const WHATSAPP_NUMERO = "5561982118809";
+ 
+const CONTACT_EMAIL = "caiobarreto1000@hotmail.com";
 const LANGUAGE_STORAGE_KEY = "grc-language";
 
 let currentLanguage = "pt";
@@ -282,35 +283,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contactForm = document.getElementById("contact-form");
 
-  contactForm?.addEventListener("submit", (event) => {
+   contactForm?.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const formData = new FormData(contactForm);
     const nome = String(formData.get("nome") || "").trim();
-    const whatsapp = String(formData.get("whatsapp") || "").trim();
+    const telefone = String(formData.get("whatsapp") || "").trim();
     const mensagem = String(formData.get("mensagem") || "").trim();
 
-    if (!WHATSAPP_NUMERO || WHATSAPP_NUMERO.includes("SEUNUMERO")) {
-      alert(
-        currentLanguage === "en"
-          ? "Before publishing, replace WHATSAPP_NUMERO in script.js with your number, including country code and area code."
-          : "Antes de publicar, substitua WHATSAPP_NUMERO em script.js pelo seu número com DDI e DDD."
-      );
-      return;
+    const subject = getTranslation("email.subject");
+
+    const lines = [
+      getTranslation("email.greeting"),
+      "",
+      `${getTranslation("email.name")}: ${nome}`
+    ];
+
+    if (telefone) {
+      lines.push(`${getTranslation("email.phone")}: ${telefone}`);
     }
 
-    const texto = encodeURIComponent(
-      `${getTranslation("whatsapp.greeting")}\n\n` +
-        `${getTranslation("whatsapp.name")}: ${nome}\n` +
-        `${getTranslation("whatsapp.phone")}: ${whatsapp}\n\n` +
-        `${getTranslation("whatsapp.project")}:\n${mensagem}`
-    );
+    lines.push("", `${getTranslation("email.project")}:`, mensagem);
 
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`,
-      "_blank",
-      "noopener"
-    );
+    const body = lines.join("\r\n");
+
+    window.location.href =
+      `mailto:${CONTACT_EMAIL}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
   });
 
   const year = document.getElementById("year");
