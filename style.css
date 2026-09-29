@@ -472,4 +472,6 @@ button { cursor: pointer; }
   .faq .section-heading > p { text-align: left;}}
 @media (max-width: 560px) { .language-switcher-mobile { margin-top: 14px;}
   .faq-list summary { align-items: flex-start; gap: 16px;}
-  .faq-list summary span { flex: 0 0 auto;}}
+  .faq-list summary span { flex: 0 0 auto;}} 
+  /* Remove as setas de navegação dos cards de serviço no mobile */
+@media (max-width: 900px) {.service-card .service-arrow { display: none;}}
