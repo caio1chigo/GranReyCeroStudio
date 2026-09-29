@@ -400,13 +400,76 @@ button { cursor: pointer; }
 .project-image-link:hover .project-image-motion,
 .project-image-link:focus-visible .project-image-motion { filter: brightness(.82) saturate(1.12); transform: scale(1.12) translateX(-1.5%);}
 .project-image-link:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px;}
-
 /* TESTE: fonte Saved By Zero */
 .hero h1 strong,
 .brand strong,
-.footer-brand strong {
-  font-family: "Saved By Zero", Arial, sans-serif !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  letter-spacing: 0 !important;
-}
+.footer-brand strong { font-family: "Saved By Zero", Arial, sans-serif !important; font-style: normal !important; font-weight: 400 !important; letter-spacing: 0 !important;}
+/*SELETOR DE IDIOMA*/
+.language-switcher { display: inline-flex; align-items: center; gap: 7px; color: rgba(255, 255, 255, 0.72); font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em;}
+.language-button { padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; opacity: 0.58; transition: opacity 180ms ease, color 180ms ease;}
+.language-button:hover,
+.language-button:focus-visible,
+.language-button.is-active { color: #fff; opacity: 1;}
+.language-button:focus-visible { outline: 1px solid currentColor; outline-offset: 4px;}
+.language-divider { opacity: 0.4;}
+.language-switcher-mobile { margin-top: 16px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.18);}
+/*AJUSTE FINAL:
+   HEADER, IDIOMA E FAQ*/
+/* O header volta a ser uma linha horizontal */
+.site-header { display: flex; align-items: center; flex-wrap: nowrap; gap: 24px;}
+/* A navegação ocupa o espaço central sem empurrar os demais itens */
+.desktop-nav { display: flex; align-items: center; justify-content: flex-end; flex: 1 1 auto; min-width: 0; gap: clamp(18px, 2.4vw, 38px);}
+/* Seletor PT / EN perfeitamente horizontal */
+.language-switcher { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; width: max-content; min-width: 53px; height: 32px; margin: 0; padding: 0; white-space: nowrap; writing-mode: horizontal-tb; transform: none;}
+.language-button { display: inline-flex; align-items: center; justify-content: center; width: auto; height: 24px; margin: 0; padding: 0; line-height: 1; white-space: nowrap; writing-mode: horizontal-tb; transform: none;}
+.language-divider { display: inline-block; margin: 0; line-height: 1; transform: none;}
+/* Mantém o contato no fluxo original do cabeçalho */
+.header-contact { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; width: max-content; min-height: 40px; margin: 0; white-space: nowrap; writing-mode: horizontal-tb; transform: none;}
+/* Impede qualquer regra antiga de girar ou deslocar o FAQ */
+.faq,
+.faq-inner,
+.faq-backdrop,
+.faq-list,
+.faq-list details,
+.faq-list summary,
+.faq-list .faq-answer,
+.faq-list .faq-answer p { text-orientation: mixed; transform: none;}
+/* Estrutura normal do FAQ */
+.faq-inner { position: relative; z-index: 2;}
+.faq .section-heading,
+.faq .faq-list { width: 100%; max-width: none;}
+.faq .section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 0.55fr); gap: 48px; align-items: end;}
+.faq .section-heading h2 { max-width: 760px; margin: 0; text-align: left;}
+.faq .section-heading > p { max-width: 420px; margin: 0; text-align: left;}
+.faq-list { display: flex; flex-direction: column; gap: 0;}
+.faq-list details,
+.faq-list summary,
+.faq-answer { transform: none;}
+.faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; text-align: left;}
+/* Texto da pergunta */
+.faq-list summary > span[data-i18n] { position: static; display: block; flex: 1 1 auto; width: auto; height: auto; margin: 0; color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; text-align: left; transform: none !important; writing-mode: horizontal-tb;}
+/* Símbolo + no lado direito */
+.faq-list summary > span:last-child { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 22px; height: 22px; margin-left: auto; color: #ff6540; font-size: 1.45rem; font-weight: 400; line-height: 1; transform: none; transition: transform 240ms ease;}
+/* Gira somente o + quando a pergunta estiver aberta */
+.faq-list details[open] summary > span:last-child { transform: rotate(45deg);}
+.faq-answer p { max-width: 760px; margin: 0; text-align: left;}
+/* Desktop: evita que o seletor fique torto ou cause quebra */
+@media (min-width: 901px) {.site-header { min-height: 76px;}
+  .language-switcher { align-self: center;}
+  .header-contact { align-self: center;}
+  .language-switcher-mobile { display: none;}}
+/* Mobile */
+@media (max-width: 900px) { .site-header { position: sticky; top: 0; display: flex; align-items: center; gap: 12px; min-height: 68px;}
+  .brand { flex: 1 1 auto; min-width: 0;}
+  .desktop-nav,
+  .site-header > .header-contact,
+  .site-header > .language-switcher { display: none;}
+  .menu-toggle { display: block; flex: 0 0 44px;}
+  .mobile-menu { align-items: flex-start;}
+  .language-switcher-mobile { display: inline-flex; width: max-content; min-width: 53px; height: 32px; margin-top: 16px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.18);}
+  .faq .section-heading { grid-template-columns: 1fr; gap: 22px; align-items: start;}
+  .faq .section-heading h2,
+  .faq .section-heading > p { text-align: left;}}
+@media (max-width: 560px) { .language-switcher-mobile { margin-top: 14px;}
+  .faq-list summary { align-items: flex-start; gap: 16px;}
+  .faq-list summary span { flex: 0 0 auto;}}
