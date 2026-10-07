@@ -139,7 +139,7 @@ const translations = {
     "faq.a4":
       "Sim. Dependendo do projeto, a atualização pode ser feita por você, via uma estrutura combinada, ou por suporte contínuo do estúdio.",
 
-    "contact.eyebrow": "07 — Contato",
+    "contact.eyebrow": "08 — Contato",
     "contact.title":
       "Tem um projeto que merece existir fora da sua cabeça?",
     "contact.copy":
@@ -317,7 +317,7 @@ const translations = {
     "faq.a4":
       "Yes. Depending on the project, updates can be handled by you through an agreed structure or through ongoing studio support.",
 
-    "contact.eyebrow": "07 — Contact",
+    "contact.eyebrow": "08 — Contact",
     "contact.title": "Have a project ready to move beyond the idea stage?",
     "contact.copy":
       "Tell me a little about the idea, where your business is now, and what you want to build.",
