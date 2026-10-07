@@ -120,7 +120,7 @@ const translations = {
     "about.open": "Conheça a história",
     "about.close": "Fechar história",
     "about.panel":
-      "Meu foco é criar sites que equilibrem estética, clareza e função. Cada projeto começa entendendo o que torna um negócio único — e termina com uma estrutura que ajuda pessoas a encontrá-lo, entendê-lo e entrar em contato.",
+      "Meu foco é criar sites que equilibrem estética, clareza e função. Cada projeto começa entendendo o que torna um negócio único e termina com uma estrutura que ajuda pessoas a encontrá-lo, entendê-lo e entrar em contato.",
 
     "faq.eyebrow": "06 — FAQ",
     "faq.title": "Perguntas antes de começar.",
