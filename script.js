@@ -35,7 +35,7 @@ function updateAboutButton() {
     : getTranslation("about.open");
 
   aboutTrigger.innerHTML = `${label} <span aria-hidden="true">${
-    isOpen ? "×" : "↗"
+    isOpen ? "×" : "→"
   }</span>`;
 
   aboutTrigger.setAttribute(
