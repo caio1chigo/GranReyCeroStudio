@@ -1,0 +1,278 @@
+/* ========= FONTES =========
+   Coloque os arquivos em src/fonts/ (veja README). Se não existirem, entram as substitutas. */
+@font-face{font-family:'Saved By Zero';src:local('Saved By Zero'),url('src/Saved\ by\ Zero\ Rg.otf') format('woff2'),url('src/Saved\ by\ Zero\ Rg.otf') format('truetype');font-display:swap}
+@font-face{font-family:'Weezer';src:local('Weezer'),url('src/weezerfont.ttf') format('woff2'),url('src/fonts/weezerfont.ttf') format('truetype');font-display:swap}
+
+:root {
+  --ink: #05070c;
+  --paper: #f6f1ea;
+
+  --orange: #ff5b20;
+  --pink: #ff2ba6;
+  --teal: #0098b6;
+
+  /* Hover saturado, com laranja menos dominante */
+  --fire-yellow: #ffe600;
+  --fire-orange: #ff4a00;
+  --fire-magenta: #ff007f;
+  --fire-pink: #ff3fc8;
+  --fire-pink-dark: #c900a8;
+  --fire-purple: #7214e8;
+  --fire-violet: #3b1a9a;
+  --fire-navy: #101b45;
+
+  --font-studio: 'Saved By Zero', 'Anton', Impact, sans-serif;
+  --font-headline: Impact, 'Anton', 'Arial Narrow Bold', sans-serif;
+  --font-text: 'Weezer', 'DM Sans', Arial, sans-serif;
+  --gutter: clamp(20px, 5vw, 72px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--teal);color:var(--ink);font-family:var(--font-text);font-synthesis:none}
+a{color:inherit;text-decoration:none}
+
+.campaign{position:relative;min-height:100svh;display:flex;flex-direction:column;isolation:isolate;overflow:hidden;padding:22px var(--gutter) 18px}
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0088ae 0%, #02a0be 45%, #03b2c7 100%);
+}
+.bg img {
+  position: absolute;
+  right: 4vw;
+  bottom: -2%;
+  height: 108%;
+  width: auto;
+  max-width: none;
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+}
+.grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.12;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+
+.masthead,.footer{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.masthead{padding-bottom:12px;border-bottom:1px solid #05070c55}
+.wordmark{display:flex;align-items:baseline;gap:10px}
+.wordmark small{font-size:11px;letter-spacing:.18em;font-weight:700}
+.wordmark strong{font:400 clamp(24px,2.4vw,34px)/1 var(--font-studio);color:var(--orange);text-shadow:0 0 14px #ff5b2055;letter-spacing:.02em}
+.edition,.footer-note{font-size:9px;letter-spacing:.18em;font-weight:700}
+
+.hero{flex:1;width:100%;max-width:1600px;margin:0 auto;display:flex;align-items:center}
+.hero-copy{max-width:min(760px,56vw);padding:36px 0 44px}
+.kicker{display:flex;justify-content:space-between;gap:16px;max-width:560px;margin:0 0 20px;font-size:9px;font-weight:700;letter-spacing:.2em}
+h1{margin:0;font:400 clamp(54px,min(7.8vw,12.5svh),120px)/.92 var(--font-headline);letter-spacing:-.005em;text-transform:uppercase;color:var(--ink);
+   text-shadow:0 0 5px #ff8a2b,0 0 16px #ff5b20,0 0 38px #ff2ba6aa}
+h1 .period{color:var(--orange)}
+.support{max-width:520px;margin:22px 0 24px;font-size:clamp(15px,1.4vw,19px);line-height:1.5;font-weight:500}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:34px;min-width:220px;padding:16px 20px;border:2px solid var(--ink);font:700 11px var(--font-text);letter-spacing:.16em;cursor:pointer;transition:transform .25s,background .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn span{font-size:18px;transition:transform .25s}
+.btn-primary,
+.btn-secondary {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Camada colorida que aparece no hover */
+.btn-primary::before,
+.btn-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: linear-gradient(
+    100deg,
+    var(--fire-yellow) 0%,
+    var(--fire-orange) 6%,
+    var(--fire-magenta) 23%,
+    var(--fire-pink) 42%,
+    var(--fire-pink-dark) 59%,
+    var(--fire-purple) 77%,
+    var(--fire-violet) 90%,
+    var(--fire-navy) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  transition:
+    opacity 0.25s ease,
+    background-position 0.8s ease;
+}
+
+/* Faz o gradiente surgir no foco e no hover */
+.btn-primary:hover::before,
+.btn-primary:focus-visible::before,
+.btn-secondary:hover::before,
+.btn-secondary:focus-visible::before {
+  opacity: 1;
+  background-position: 100% 50%;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  color: var(--paper);
+  border-color: var(--fire-pink);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 12px var(--fire-yellow),
+    0 0 25px var(--fire-magenta),
+    0 8px 24px #05070c66;
+}
+
+/* Mantém texto e seta à frente do gradiente */
+.btn-primary span,
+.btn-secondary span {
+  position: relative;
+  z-index: 1;
+}
+
+/* No celular, aplica o gradiente durante o toque */
+@media (hover: none) {
+  .btn-primary:active,
+  .btn-secondary:active {
+    color: var(--paper);
+    border-color: var(--fire-pink);
+    background: linear-gradient(
+      100deg,
+      var(--fire-yellow) 0%,
+      var(--fire-orange) 6%,
+      var(--fire-magenta) 23%,
+      var(--fire-pink) 42%,
+      var(--fire-pink-dark) 59%,
+      var(--fire-purple) 77%,
+      var(--fire-violet) 90%,
+      var(--fire-navy) 100%
+    );
+  }
+}
+
+.footer{padding-top:12px;border-top:1px solid #05070c55}
+.contact-links{display:flex;gap:clamp(14px,3vw,38px);font-size:10px;font-weight:700;letter-spacing:.14em}
+.contact-links a{transition:color .2s}.contact-links a:hover{color:var(--orange);text-shadow:0 0 1px var(--ink)}
+
+dialog{padding:0;border:0;background:transparent;color:var(--paper);max-width:min(440px,calc(100vw - 32px));width:100%}
+dialog::backdrop{background:#02080cd9;backdrop-filter:blur(6px)}
+.dialog-panel{position:relative;padding:34px 28px 28px;background:#0b1217;border:1px solid #ffffff4a;box-shadow:0 25px 90px #000b}
+.close-dialog{position:absolute;right:12px;top:10px;width:34px;height:34px;background:none;border:1px solid #ffffff55;color:#fff;font-size:23px;cursor:pointer;transition:.2s}
+.close-dialog:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.dialog-kicker{margin:0 0 11px;font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--orange)}
+.dialog-panel h2{margin:0 0 22px;font:400 40px/.95 var(--font-headline);text-transform:uppercase}
+.contact-option{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:16px 17px;border:1px solid #ffffff54;transition:.2s}
+.contact-option span{display:flex;flex-direction:column;gap:4px}
+.contact-option b{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.contact-option small{font-size:11px;color:#a9b8c0}
+.contact-option i{font-style:normal;font-size:20px}
+.contact-option:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.contact-option:hover small{color:#3a1a0d}
+
+.toast{position:fixed;z-index:99;left:50%;bottom:22px;max-width:calc(100vw - 30px);padding:12px 18px;background:var(--ink);color:var(--paper);font-size:12px;text-align:center;opacity:0;pointer-events:none;transform:translate(-50%,15px);transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.enter{opacity:0;transform:translateY(18px);animation:enter .7s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--delay,0ms)}
+@keyframes enter{to{opacity:1;transform:none}}
+
+@media(max-width:800px){
+    .campaign {
+    background: linear-gradient(
+      180deg,
+      #0098b6 0%,
+      #02a6c1 48%,
+      #03b2c7 100%
+    );
+  }
+
+  .bg {
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .bg-desktop-person {
+    display: none;
+  }
+
+  .bg-mobile-photo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: 100%;
+    height: 48%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 24%;
+    transform: translateX(-50%);
+
+    /* A foto desaparece suavemente antes do bloco de texto */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 68%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 68%,
+      transparent 100%
+    );
+  }
+
+  .hero {
+    position: relative;
+    z-index: 2;
+    align-items: flex-end;
+  }
+
+  .hero-copy {
+    padding-top: 42vh;
+    padding-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(39px, 11.5vw, 58px);
+    text-shadow:
+      0 0 2px #ffb36b,
+      0 0 11px rgba(255, 91, 32, .58);
+  }
+
+  .support {
+    margin-top: 14px;
+  }
+  .hero{align-items:flex-end}
+  .hero-copy{max-width:none;padding:24px 0 16px}
+  .kicker,.footer-note{display:none}
+  h1{font-size:clamp(38px,min(12.4vw,5.7svh),76px);line-height:.93}
+  .support{font-size:14px;margin:14px 0 16px;max-width:none}
+  .buttons{display:grid;grid-template-columns:1fr;gap:8px}
+  .btn{min-width:0;width:100%;padding:14px 18px}
+  .footer{justify-content:center}
+  .contact-links{width:100%;justify-content:space-between;font-size:9px}
+  .edition{font-size:8px}
+}
+@media(max-width:380px){.edition{display:none}}
+@media(prefers-reduced-motion:reduce){.enter{opacity:1;transform:none;animation:none}*,*::before,*::after{transition-duration:.01ms!important}}
